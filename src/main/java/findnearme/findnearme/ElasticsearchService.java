@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ElasticsearchService {
 
-    private final String elasticsearchUrl = "https://localhost:9200"; // Adjust the URL based on your Elasticsearch server configuration
+    private final String elasticsearchUrl = "http://localhost:9200"; // Adjust the URL based on your Elasticsearch server configuration
 
     private final RestTemplate restTemplate;
 
@@ -24,15 +24,8 @@ public class ElasticsearchService {
     public boolean isElasticsearchUp() {
         try {
             HttpHeaders headers = new HttpHeaders();
-//            String username = "elastic";
-//            String password = "-uFsO4tlbjOjrBWgWAJR";
-//            String credentials = username + ":" + password;
-//            String base64Credentials = new String(java.util.Base64.getEncoder().encode(credentials.getBytes()));
-//            headers.set("Authorization", "Basic " + base64Credentials);
-
-            //headers.setBasicAuth("elastic","-uFsO4tlbjOjrBWgWAJR");
             String username = "elastic";
-            String password = "-uFsO4tlbjOjrBWgWAJR";
+            String password = "ZwS+YD2cIL5XSSPZGsTs";
             headers.setBasicAuth(username, password);
             ResponseEntity<String> response = restTemplate.exchange(
                     elasticsearchUrl,
