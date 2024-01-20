@@ -1,7 +1,8 @@
 # Find near me           
 
 ## Overview
-This application lets a store owner post store info, metadata, and geolocation using API: localhost:8080/api/store
+Restaurant-recommendation system(helps you find nearest restaurant based on fine grained specifications like [user query: Check for a place that serves butter chicken, has 5-star ratings, and has been eaten at by at least 10 of my friends)
+      🍕🌏 this project demonstrates the power of Elasticsearch, and how indexing and querying works.
 Sample Request Body:
 {"query":"food near me"}
 
