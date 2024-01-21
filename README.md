@@ -5,4 +5,4 @@ APIs
 
 
 ## Installation:
-To install Elastic, Logstash, Kibana all in one command, use Docker image placed at ```cd\cd ```
+To install Elastic, Logstash, Kibana all in one command, use docker container using```src/main/resources/docker-compose.yml```
