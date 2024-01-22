@@ -1,21 +1,22 @@
-APIs
-1) Put: Create a restaurant
-2) Post: Create a restaurant
-3) Get: Get a restaurant
-
-
-## Queries
-Find burger places near me
-Searches category burger lat long filtered with distance 5 miles
-
-
+## Features:
+Type something like
+   ```
+   butter chicken place in Richardson, TX
+   ```
+App returns
+```
+{
+   "name":"",
+   "location":""
+}
+```
 
 ## Installation:
 Use docker container of Elastic, Logstash, Kibana at```src/main/resources/docker-compose.yml```
 
 ## Loading restaurants dataset into elasticsearch and index it.
-1) transform dataset into elasticsearchable data format
-   sample json dataset which is understood by es,
+1) Transform dataset into elasticsearchable data format
+   Json format accepted by Elasticsearch,
 ```
 {"index": {}}
 {"id": 1, "position": 19, "name": "PJ Fresh (224 Daniel Payne Drive)", "score": "", "ratings": "", "category": "Burgers, American, Sandwiches", "price_range": "$", "full_address": "224 Daniel Payne Drive, Birmingham, AL, 35207", "zip_code": 35207, "lat": 33.5623653, "lng": -86.8307025}
@@ -24,7 +25,7 @@ Use docker container of Elastic, Logstash, Kibana at```src/main/resources/docker
 {"index": {}}
 {"id": 3, "position": 6, "name": "Philly Fresh Cheesesteaks (541-B Graymont Ave)", "score": "", "ratings": "", "category": "American, Cheesesteak, Sandwiches, Alcohol", "price_range": "$", "full_address": "541-B Graymont Ave, Birmingham, AL, 35204", "zip_code": 35204, "lat": 33.5098, "lng": -86.85464}
 ```
-2) Creating a new index 'restaurants' inside elastic ``` curl -XPUT "http://localhost:9200/restaurants" ```
+2) Creating an index 'restaurants' inside elastic ``` curl -XPUT "http://localhost:9200/restaurants" ```
 
 3) Using elastic's bulk api to populate elastic cluster using ``` curl -s -H "Content-Type: application/json" -XPOST "http://localhost:9200/restaurants/_bulk" --data-binary "@restaurant.json" ```
 
