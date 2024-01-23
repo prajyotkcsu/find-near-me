@@ -1,6 +1,7 @@
 ## Project motivation
-This project helps me query restaurants that serve a particular cuisine. I'm relying on Elasticsearch's ability to index documents and return documents that matches a criteria.
 
+This project is driven by the objective of seamlessly querying and retrieving information about restaurants that cater to specific culinary preferences. <br> 
+Utilizing Elasticsearch's indexing power, the system efficiently organizes and retrieves relevant information based on specific criteria.
 ## Features:
 
 #### Type something like
