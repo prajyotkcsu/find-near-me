@@ -1,7 +1,10 @@
 ## Project motivation
-
 This project is driven by the objective of seamlessly querying and retrieving information about restaurants that cater to specific culinary preferences. <br> 
 Utilizing Elasticsearch's indexing power, the system efficiently organizes and retrieves relevant information based on specific criteria.
+
+## Future release:
+Enable user input for search phrases, similar to services like UberEats. <br>Users can input phrases like "noodle places in Plano, TX," and the system will interpret and generate dynamic queries using OpenAI, enhancing the search experience.
+
 ## Features:
 
 #### Type something like
@@ -9,7 +12,7 @@ Utilizing Elasticsearch's indexing power, the system efficiently organizes and r
    noodles place near me
    ```
 
-The app runs a query similar to the below one,
+#### The app runs a query similar to the below one,
 ```
 GET /restaurants/_search
 {
@@ -40,7 +43,7 @@ GET /restaurants/_search
   }
 }
 ```
-Here, lat and lon values are taken from google maps coordinates
+#### Note: lat and lon values are my own coordinates taken from google maps.
 
 #### App returns
 ```
