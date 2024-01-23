@@ -1,14 +1,233 @@
 ## Features:
 Type something like
    ```
-   butter chicken place in Richardson, TX
+   noodles place near me
    ```
+
+The app runs a query similar to the below one,
+```
+GET /restaurants/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "category": "noodles"
+          }
+        },
+        {
+          "match": {
+            "category": "burgers"
+          }
+        }
+      ],
+      "filter": [{
+        "geo_distance": {
+          "distance": "1km", 
+          "pin.location": {
+            "lat": 33.00165594272553,
+            "lon": -96.70513953195999
+          }
+        }
+      }]
+    }
+  }
+}
+```
+
 App returns
 ```
 {
-   "name":"",
-   "location":""
+  "took" : 1087,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 33,
+      "relation" : "eq"
+    },
+    "max_score" : 4.2395544,
+    "hits" : [
+      {
+        "_index" : "restaurants",
+        "_type" : "_doc",
+        "_id" : "RBwRNI0Be1mGWNDd9nm5",
+        "_score" : 4.2395544,
+        "_source" : {
+          "name" : "Sticky Rice - Richardson",
+          "category" : "Thai, Asian, Noodles",
+          "full_address" : "120 W. CityLine Drive, #500, Richardson, TX, 75074",
+          "pin" : {
+            "location" : {
+              "lat" : 33.002223,
+              "lon" : -96.705388
+            }
+          }
+        }
+      },
+      {
+        "_index" : "restaurants",
+        "_type" : "_doc",
+        "_id" : "GxwRNI0Be1mGWNDd9nm5",
+        "_score" : 2.3286238,
+        "_source" : {
+          "name" : "Smashburger (1425 E. Renner Rd.)",
+          "category" : "American, Burgers",
+          "full_address" : "1425 E. Renner Rd., Richardson, TX, 75082",
+          "pin" : {
+            "location" : {
+              "lat" : 32.9978317,
+              "lon" : -96.6976462
+            }
+          }
+        }
+      },
+      {
+        "_index" : "restaurants",
+        "_type" : "_doc",
+        "_id" : "YhwTNI0Be1mGWNDdB94Q",
+        "_score" : 2.2925732,
+        "_source" : {
+          "name" : "Hootie's Burger Bar (720 Central Expressway)",
+          "category" : "Burgers, American, Bar Food, Sandwiches, Burgers",
+          "full_address" : "720 Central Expy, Plano, TX, 75074",
+          "pin" : {
+            "location" : {
+              "lat" : 33.0104668,
+              "lon" : -96.7066085
+            }
+          }
+        }
+      },
+      {
+        "_index" : "restaurants",
+        "_type" : "_doc",
+        "_id" : "hRwRNI0Be1mGWNDd9na5",
+        "_score" : 2.1044445,
+        "_source" : {
+          "name" : "Good Union BBQ",
+          "category" : "BBQ, American, Burgers",
+          "full_address" : "1150 State St #150, Richardson, TX, 75082",
+          "pin" : {
+            "location" : {
+              "lat" : 33.00099,
+              "lon" : -96.70229
+            }
+          }
+        }
+      },
+      {
+        "_index" : "restaurants",
+        "_type" : "_doc",
+        "_id" : "jRwTNI0Be1mGWNDdB-QR",
+        "_score" : 2.1044445,
+        "_source" : {
+          "name" : "Char'd: Southeast Asian Kitchen - Richardson TX",
+          "category" : "BBQ, American, Burgers",
+          "full_address" : "1251 State Street, Richardson, TX, 75082",
+          "pin" : {
+            "location" : {
+              "lat" : 33.00162,
+              "lon" : -96.70143
+            }
+          }
+        }
+      },
+      {
+        "_index" : "restaurants",
+        "_type" : "_doc",
+        "_id" : "xxwTNI0Be1mGWNDdB9gQ",
+        "_score" : 1.9196389,
+        "_source" : {
+          "name" : "Hooters (N Central Expy E Plano Pkwy)",
+          "category" : "American, Wings, Chicken, Burgers",
+          "full_address" : "720 Central Expressway, Plano, TX, 75074",
+          "pin" : {
+            "location" : {
+              "lat" : 33.0104668,
+              "lon" : -96.7066085
+            }
+          }
+        }
+      },
+      {
+        "_index" : "restaurants",
+        "_type" : "_doc",
+        "_id" : "xRwRNI0Be1mGWNDd9na5",
+        "_score" : 0.0,
+        "_source" : {
+          "name" : "Nestlé Toll House Café by Chip (1201 State St)",
+          "category" : "Desserts",
+          "full_address" : "1201 State St, Richardson, TX, 75082",
+          "pin" : {
+            "location" : {
+              "lat" : 33.0018642,
+              "lon" : -96.7019373
+            }
+          }
+        }
+      },
+      {
+        "_index" : "restaurants",
+        "_type" : "_doc",
+        "_id" : "4xwRNI0Be1mGWNDd9na5",
+        "_score" : 0.0,
+        "_source" : {
+          "name" : "Good Union BBQ",
+          "category" : "BBQ, Sandwich",
+          "full_address" : "1150 State St, Richardson, TX, 75082",
+          "pin" : {
+            "location" : {
+              "lat" : 33.0009142,
+              "lon" : -96.7021589
+            }
+          }
+        }
+      },
+      {
+        "_index" : "restaurants",
+        "_type" : "_doc",
+        "_id" : "KBwRNI0Be1mGWNDd9ne5",
+        "_score" : 0.0,
+        "_source" : {
+          "name" : "Genji Sushi (Cityline)",
+          "category" : "Asian, Japanese, Healthy, Sushi",
+          "full_address" : "1411 E. Renner Road, Richardson, TX, 75074",
+          "pin" : {
+            "location" : {
+              "lat" : 32.99848,
+              "lon" : -96.69809
+            }
+          }
+        }
+      },
+      {
+        "_index" : "restaurants",
+        "_type" : "_doc",
+        "_id" : "LxwRNI0Be1mGWNDd9ne5",
+        "_score" : 0.0,
+        "_source" : {
+          "name" : "Pho is for Lovers",
+          "category" : "Vietnamese, Asian, Rice &amp; Curry, Rolls",
+          "full_address" : "1551 E Renner Rd, Richardson, TX, 75074",
+          "pin" : {
+            "location" : {
+              "lat" : 32.9981283,
+              "lon" : -96.6965416
+            }
+          }
+        }
+      }
+    ]
+  }
 }
+
 ```
 
 ## Installation:
