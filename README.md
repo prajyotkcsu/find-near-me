@@ -15,7 +15,7 @@ App returns
 Use docker container of Elastic, Logstash, Kibana at```src/main/resources/docker-compose.yml```
 
 ## Loading restaurants dataset into elasticsearch and index it.
-1) Transform dataset into elasticsearch accepted json format
+### Transform dataset into elasticsearch accepted json format
 ```
 {"index": {}}
 {"id": 1, "position": 19, "name": "PJ Fresh (224 Daniel Payne Drive)", "score": "", "ratings": "", "category": "Burgers, American, Sandwiches", "price_range": "$", "full_address": "224 Daniel Payne Drive, Birmingham, AL, 35207", "zip_code": 35207, "lat": 33.5623653, "lng": -86.8307025}
@@ -24,12 +24,13 @@ Use docker container of Elastic, Logstash, Kibana at```src/main/resources/docker
 {"index": {}}
 {"id": 3, "position": 6, "name": "Philly Fresh Cheesesteaks (541-B Graymont Ave)", "score": "", "ratings": "", "category": "American, Cheesesteak, Sandwiches, Alcohol", "price_range": "$", "full_address": "541-B Graymont Ave, Birmingham, AL, 35204", "zip_code": 35204, "lat": 33.5098, "lng": -86.85464}
 ```
-2) Creating an index 'restaurants' inside elastic
+ Creating an index 'restaurants' inside elastic
    ``` curl -XPUT "http://localhost:9200/restaurants" ```
 
 4) Using elastic's bulk api to populate elastic cluster with json data
-   ``` curl -s -H "Content-Type: application/json" -XPOST "http://localhost:9200/restaurants/_bulk" --data-binary "@restaurant.json" ```
+``` curl -s -H "Content-Type: application/json" -XPOST "http://localhost:9200/restaurants/_bulk" --data-binary "@restaurant.json" ```
 
-6) view indexes with their details ``` curl -XGET "http://localhost:9200/_cat/indices" ```
+6) List indices
+``` curl -XGET "http://localhost:9200/_cat/indices" ```
  
 ![image](https://github.com/prajyotkcsu/find-near-me/assets/154280801/8202976e-fa6f-4829-a80f-fe71236e15e3)
