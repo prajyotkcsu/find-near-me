@@ -14,8 +14,9 @@ App returns
 ## Installation:
 Use docker container of Elastic, Logstash, Kibana at```src/main/resources/docker-compose.yml```
 
-## Loading restaurants dataset into elasticsearch and index it.
-### Transform dataset into elasticsearch accepted json format
+## Creating and populating an index
+
+#### Transform dataset into elasticsearch accepted json format
 ```
 {"index": {}}
 {"id": 1, "position": 19, "name": "PJ Fresh (224 Daniel Payne Drive)", "score": "", "ratings": "", "category": "Burgers, American, Sandwiches", "price_range": "$", "full_address": "224 Daniel Payne Drive, Birmingham, AL, 35207", "zip_code": 35207, "lat": 33.5623653, "lng": -86.8307025}
