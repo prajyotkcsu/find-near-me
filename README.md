@@ -1,5 +1,9 @@
+## Project motivation
+This project helps me query restaurants that serve a particular cuisine. I'm relying on Elasticsearch's ability to index documents and return documents that matches a criteria.
+
 ## Features:
-Type something like
+
+#### Type something like
    ```
    noodles place near me
    ```
@@ -35,8 +39,9 @@ GET /restaurants/_search
   }
 }
 ```
+Here, lat and lon values are taken from google maps coordinates
 
-App returns
+#### App returns
 ```
 {
   "took" : 1087,
@@ -76,6 +81,7 @@ App returns
 }
 
 ```
+#### fun fact: Sticky Rice is located inside our building, merely 200 ft away. 
 
 ## Installation:
 Use docker container of Elastic, Logstash, Kibana at```src/main/resources/docker-compose.yml```
