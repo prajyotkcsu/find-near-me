@@ -5,6 +5,12 @@ Utilizing Elasticsearch's indexing power, the system efficiently organizes and r
 ## Future release:
 Enable user input for search phrases, similar to services like UberEats. <br>Users can input phrases like "noodle places in Plano, TX," and the system will interpret and generate dynamic queries using OpenAI, enhancing the search experience.
 
+*****Next project update: Trip advisor
+   MVP: food places on the path based on cuisine
+   Solution: find k shortest paths from point A->B and store food places along each kth path in an array.
+
+
+
 ## Features:
 
 #### Type something like
