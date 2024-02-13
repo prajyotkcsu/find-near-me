@@ -49,6 +49,13 @@ GET /restaurants/_search
   }
 }
 ```
+## Kibana interactive UI for querying index data
+![image](https://github.com/prajyotkcsu/find-near-me/assets/154280801/ce926999-f2cd-4287-b881-443d415ca9c6)
+
+
+
+
+
 #### Note: lat and lon values are my own coordinates taken from google maps.
 
 #### App returns
