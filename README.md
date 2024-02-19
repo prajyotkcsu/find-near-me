@@ -101,6 +101,10 @@ GET /restaurants/_search
 #### fun fact: Sticky Rice is located inside our building, merely 200 ft away. 
 
 ## Installation:
+```
+docker pull docker.elastic.co/elasticsearch/elasticsearch:7.17.9 <br>
+docker run -p 9200:9200 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.17.9
+```
 Use docker container of Elastic, Logstash, Kibana at```src/main/resources/docker-compose.yml```
 
 ## Indexing dataset
