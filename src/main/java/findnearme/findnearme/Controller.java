@@ -10,8 +10,8 @@ public class Controller {
     private RestaurantRepository restaurantRepository;
 
     @PostMapping("/create")
-    public void insertPlace(@RequestBody Restaurant locationDetails){
-        restaurantRepository.save(locationDetails);
+    public void createRestaurant(@RequestBody Restaurant restaurant){
+        restaurantRepository.save(restaurant);
     }
     /**
      * this api returns top 5 restaurants near you that offers any one of the food within the category
@@ -24,6 +24,15 @@ public class Controller {
             @RequestParam String category,
             @RequestParam Double lat,
             @RequestParam Double lon) {
+        GeoPoint location = new GeoPoint(33.00167393830364, -96.70512880312421);
+
+        // Define the search query
+        SearchQuery query = new NativeSearchQueryBuilder()
+                .withFilter(QueryBuilders.geoDistanceQuery("pin.location").point(location).distance("4km"))
+                .build();
+
+        // Execute the search query using the repository
+        return restaurantRepository.search(query);
         //return restaurantRepository.findByCategoryAndLocation(category, lat, lon);
     }
 }
