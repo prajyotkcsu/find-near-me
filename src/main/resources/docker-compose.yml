@@ -1,20 +1,79 @@
 version: '3.7'
 
 services:
-  elasticsearch:
+  elasticsearch1:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
-    container_name: elasticsearch
+    container_name: elasticsearch1
     environment:
-      - discovery.type=single-node
+      - node.name=es01
+      - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
+      - cluster.initial_master_nodes=elasticsearch1,elasticsearch2,elasticsearch3
+      - cluster.name=mycluster
+      - bootstrap.memory_lock=true
+      - ES_JAVA_OPTS=-Xms256m -Xmx256m
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     ports:
       - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - "es-data-es01:/usr/share/elasticsearch/data"
+
+  elasticsearch2:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
+    container_name: elasticsearch2
+    environment:
+      - node.name=es02
+      - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
+      - cluster.initial_master_nodes=elasticsearch1,elasticsearch2,elasticsearch3
+      - cluster.name=mycluster
+      - bootstrap.memory_lock=true
+      - ES_JAVA_OPTS=-Xms256m -Xmx256m
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9201:9200"
+      - "9301:9300"
+    volumes:
+      - "es-data-es02:/usr/share/elasticsearch/data"
+
+  elasticsearch3:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
+    container_name: elasticsearch3
+    environment:
+      - node.name=es03
+      - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
+      - cluster.initial_master_nodes=elasticsearch1,elasticsearch2,elasticsearch3
+      - cluster.name=mycluster
+      - bootstrap.memory_lock=true
+      - ES_JAVA_OPTS=-Xms256m -Xmx256m
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9202:9200"
+      - "9302:9300"
+    volumes:
+      - "es-data-es03:/usr/share/elasticsearch/data"
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.17.9
     container_name: kibana
     environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_HOSTS=["http://elasticsearch1:9200","http://elasticsearch2:9200","http://elasticsearch3:9200"]
     ports:
       - "5601:5601"
     depends_on:
-      - elasticsearch
+      - elasticsearch1
+      - elasticsearch2
+      - elasticsearch3
+
+volumes:
+  es-data-es01:
+  es-data-es02:
+  es-data-es03:
