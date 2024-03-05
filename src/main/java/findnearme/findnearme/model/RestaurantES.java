@@ -1,4 +1,4 @@
-package findnearme.findnearme;
+package findnearme.findnearme.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -11,7 +11,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(indexName = "restaurants")
-public class Restaurant {
+public class RestaurantES {
     @Id
     private String id;
     private String name;
