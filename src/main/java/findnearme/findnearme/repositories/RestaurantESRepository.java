@@ -1,4 +1,4 @@
-package findnearme.findnearme;
+package findnearme.findnearme.repositories;
 
 
 import findnearme.findnearme.model.RestaurantES;

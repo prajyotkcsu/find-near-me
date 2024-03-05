@@ -1,4 +1,4 @@
-package findnearme.findnearme;
+package findnearme.findnearme.config;
 
 import org.apache.http.ssl.SSLContexts;
 import org.springframework.context.annotation.Bean;

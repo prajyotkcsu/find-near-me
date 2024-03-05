@@ -1,4 +1,4 @@
-package findnearme.findnearme;
+package findnearme.findnearme.controllers;
 
 import findnearme.findnearme.model.RestaurantDB;
 import findnearme.findnearme.repositories.RestaurantDBRespository;
