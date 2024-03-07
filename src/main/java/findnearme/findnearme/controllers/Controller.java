@@ -3,6 +3,7 @@ package findnearme.findnearme.controllers;
 import findnearme.findnearme.model.RestaurantDB;
 import findnearme.findnearme.repositories.RestaurantDBRespository;
 import findnearme.findnearme.service.CSVService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -14,6 +15,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/place")
+@Slf4j
 public class Controller {
     @Autowired
     private RestaurantDBRespository restaurantDBRepository;
@@ -29,6 +31,7 @@ public class Controller {
     public void createRestaurants() throws IOException {
         String filename="C:\\beast2023\\projects\\discovery_app\\dataset\\restaurants.csv";
         int recordCount=csvService.csvToDatabase(filename);//this method read csv and write it to a database.
+        log.info("{} records saved to DB",recordCount);
 
     }
     @GetMapping("/_search")

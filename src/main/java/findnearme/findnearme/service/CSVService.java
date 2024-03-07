@@ -26,6 +26,7 @@ public class CSVService {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
                 CSVParser csvParser = CSVFormat.DEFAULT.parse(reader); // Use appropriate CSVFormat based on your CSV file structure
                 for (CSVRecord csvRecord : csvParser) {
+                  //  restaurantDB.setId();
                     restaurantDB.setName(csvRecord.get(2));
                     restaurantDB.setCategory(csvRecord.get(5).split(","));
                     String[] fullAddress=csvRecord.get(7).split(",");
@@ -41,8 +42,11 @@ public class CSVService {
                     restaurantDB.setPin(csvRecord.get(8));
                     restaurantDB.setLat(csvRecord.get(9));
                     restaurantDB.setLon(csvRecord.get(10));
+                    log.info("{} saving to db",restaurantDB);
                     repository.save(restaurantDB);
                     recordCount++;
+                    if(recordCount==5)
+                        break;
                 }
             }
         return recordCount;
