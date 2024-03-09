@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -20,13 +21,13 @@ public class CSVService {
 
     public int csvToDatabase(String filePath) throws IOException {
         log.info("Inside method");
-        RestaurantDB restaurantDB=new RestaurantDB();
+
         File file= new File(filePath);
         int recordCount=0;
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
                 CSVParser csvParser = CSVFormat.DEFAULT.parse(reader); // Use appropriate CSVFormat based on your CSV file structure
                 for (CSVRecord csvRecord : csvParser) {
-                  //  restaurantDB.setId();
+                    RestaurantDB restaurantDB=new RestaurantDB();
                     restaurantDB.setName(csvRecord.get(2));
                     restaurantDB.setCategory(csvRecord.get(5).split(","));
                     String[] fullAddress=csvRecord.get(7).split(",");
@@ -45,8 +46,7 @@ public class CSVService {
                     log.info("{} saving to db",restaurantDB);
                     repository.save(restaurantDB);
                     recordCount++;
-                    if(recordCount==5)
-                        break;
+
                 }
             }
         return recordCount;

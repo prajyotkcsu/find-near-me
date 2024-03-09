@@ -11,7 +11,9 @@ import java.util.List;
 @Table(name = "restaurants")
 public class RestaurantDB {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "restaurant_seq")
+    @SequenceGenerator(name = "restaurant_seq", sequenceName = "restaurant_seq", allocationSize = 1)
+    @Column(name = "id")
     private Long id;
     private String name;
     private String[] category;
