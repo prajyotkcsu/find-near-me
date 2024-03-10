@@ -31,20 +31,19 @@ public class CSVService {
                     restaurantDB.setName(csvRecord.get(2));
                     restaurantDB.setCategory(csvRecord.get(5).split(","));
                     String[] fullAddress=csvRecord.get(7).split(",");
-                    String city="";
-                    String state="";
-                    if(fullAddress.length>4) {
-                        city = fullAddress[fullAddress.length - 3];
-                        state = fullAddress[fullAddress.length - 2];
+                    if (fullAddress.length>1){
+                        String state = fullAddress[fullAddress.length - 2].trim();
+                        if(state.length()==2)
+                            restaurantDB.setState(state);
                     }
-                    restaurantDB.setCity(city);
-                    restaurantDB.setState(state);
+                    else{continue;}
                     restaurantDB.setFullAddress(csvRecord.get(7));
                     restaurantDB.setPin(csvRecord.get(8));
                     restaurantDB.setLat(csvRecord.get(9));
                     restaurantDB.setLon(csvRecord.get(10));
                     log.info("{} saving to db",restaurantDB);
                     repository.save(restaurantDB);
+                    if(recordCount==10)break;
                     recordCount++;
 
                 }
